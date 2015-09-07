@@ -6,7 +6,7 @@ DESCRIPTION = """Python Lunar Calendar
 """
 
 setup(name='pylunardate',
-      version='0.0.1',
+      version='0.0.2',
       packages=['lunardate'],
       description = 'A Korean Calendar Library in Pure Python',
 	    long_description=DESCRIPTION,
