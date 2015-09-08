@@ -105,7 +105,7 @@ class TestLunarDate(object):
         assert lunar_date.month == 1
         assert lunar_date.day == 1
 
-    def test_solar_to_solar_19550329_leap_double_case_check(self):
+    def test_lunar_to_solar_19550329_leap_double_case_check(self):
         lunar_date = LunarDate.to_solar(1955, 3, 29, False)
         assert lunar_date.year == 1955
         assert lunar_date.month == 4
@@ -114,3 +114,14 @@ class TestLunarDate(object):
         assert lunar_date_leap.year == 1955
         assert lunar_date_leap.month == 5
         assert lunar_date_leap.day == 20
+
+    def test_lunar_to_solar_20150908_not_leap_month_case_check(self):
+        lunar_date = LunarDate.to_solar(2015, 7, 26, False)
+        assert lunar_date.year == 2015
+        assert lunar_date.month == 9
+        assert lunar_date.day == 8
+
+        lunar_date_leap = LunarDate.to_solar(2015, 7, 26, True)
+        assert lunar_date_leap.year == 2015
+        assert lunar_date_leap.month == 9
+        assert lunar_date_leap.day == 8

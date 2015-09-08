@@ -297,7 +297,7 @@ class LunarDate(object):
 
         days += (day-1)
 
-        if is_leap_month:
+        if is_leap_month and year_info[year_diff][month] > 2:
             days += LunarDate.lunardays_for_type(year_info[year_diff][month])[1]
 
         solar_date = LunarDate._start_date + datetime.timedelta(days=days)
