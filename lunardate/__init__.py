@@ -277,3 +277,29 @@ class LunarDate(object):
 
         return LunarDate(start_year + year_idx, target_month + 1,
                          days + 1, is_leap_month)
+
+    @staticmethod
+    def from_lunar(year, month, day, is_leap_month = False):
+        if year < 1900 or year > 2050:
+            raise InvalidInputRangeError("%d should be in 1900~2050" % year)
+
+        days = 0
+        year_diff = year - 1900
+        year_info = LunarDate.year_info_map()
+
+        for year_idx in range(year_diff):
+            days += year_info[year_idx][0]
+        
+        for month_idx in range(month-1):
+            total, normal, leaf = LunarDate.lunardays_for_type(
+                                              year_info[year_diff][month_idx+1])
+            days += total
+
+        days += (day-1)
+
+        if is_leap_month:
+            days += LunarDate.lunardays_for_type(year_info[year_diff][month])[1]
+
+        sol_date = LunarDate._start_date + datetime.timedelta(days=days)
+
+        return LunarDate(sol_date.year, sol_date.month, sol_date.day, is_leap_month)
