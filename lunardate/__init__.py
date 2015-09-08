@@ -279,7 +279,7 @@ class LunarDate(object):
                          days + 1, is_leap_month)
 
     @staticmethod
-    def from_lunar(year, month, day, is_leap_month = False):
+    def to_solar(year, month, day, is_leap_month = False):
         if year < 1900 or year > 2050:
             raise InvalidInputRangeError("%d should be in 1900~2050" % year)
 
@@ -300,6 +300,6 @@ class LunarDate(object):
         if is_leap_month:
             days += LunarDate.lunardays_for_type(year_info[year_diff][month])[1]
 
-        sol_date = LunarDate._start_date + datetime.timedelta(days=days)
+        solar_date = LunarDate._start_date + datetime.timedelta(days=days)
 
-        return LunarDate(sol_date.year, sol_date.month, sol_date.day, is_leap_month)
+        return solar_date

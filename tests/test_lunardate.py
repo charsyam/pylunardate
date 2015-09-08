@@ -8,7 +8,7 @@ class TestLunarDate(object):
         assert date.month == 9
         assert date.day == 22
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(1979, 9, 22, False)
+        lunar_date = LunarDate.to_solar(1979, 9, 22, False)
         assert lunar_date.year == 1979
         assert lunar_date.month == 11
         assert lunar_date.day == 11
@@ -19,7 +19,7 @@ class TestLunarDate(object):
         assert date.month == 1
         assert date.day == 1
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(1900, 1, 1, False)
+        lunar_date = LunarDate.to_solar(1900, 1, 1, False)
         assert lunar_date.year == 1900
         assert lunar_date.month == 1
         assert lunar_date.day == 31
@@ -30,7 +30,7 @@ class TestLunarDate(object):
         assert date.month == 1
         assert date.day == 1
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(1902, 1, 1, False)
+        lunar_date = LunarDate.to_solar(1902, 1, 1, False)
         assert lunar_date.year == 1902
         assert lunar_date.month == 2
         assert lunar_date.day == 8
@@ -41,7 +41,7 @@ class TestLunarDate(object):
         assert date.month == 1
         assert date.day == 1
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(1904, 1, 1, False)
+        lunar_date = LunarDate.to_solar(1904, 1, 1, False)
         assert lunar_date.year == 1904
         assert lunar_date.month == 2
         assert lunar_date.day == 16
@@ -52,7 +52,7 @@ class TestLunarDate(object):
         assert date.month == 9
         assert date.day == 30
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(2014, 9, 30, False)
+        lunar_date = LunarDate.to_solar(2014, 9, 30, False)
         assert lunar_date.year == 2014
         assert lunar_date.month == 10
         assert lunar_date.day == 23
@@ -63,7 +63,7 @@ class TestLunarDate(object):
         assert date.month == 6
         assert date.day == 21
         assert date.is_leap_month is True
-        lunar_date = LunarDate.from_lunar(1987, 6, 21, True)
+        lunar_date = LunarDate.to_solar(1987, 6, 21, True)
         assert lunar_date.year == 1987
         assert lunar_date.month == 8
         assert lunar_date.day == 15
@@ -76,7 +76,7 @@ class TestLunarDate(object):
         assert date.month == 10
         assert date.day == 25
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(2017, 10, 25, False)
+        lunar_date = LunarDate.to_solar(2017, 10, 25, False)
         assert lunar_date.year == 2017
         assert lunar_date.month == 12
         assert lunar_date.day == 12
@@ -88,7 +88,7 @@ class TestLunarDate(object):
         assert date.month == 7
         assert date.day == 29
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(1987, 7, 29, False)
+        lunar_date = LunarDate.to_solar(1987, 7, 29, False)
         assert lunar_date.year == 1987
         assert lunar_date.month == 9
         assert lunar_date.day == 21
@@ -100,17 +100,17 @@ class TestLunarDate(object):
         assert date.month == 11
         assert date.day == 19
         assert date.is_leap_month is False
-        lunar_date = LunarDate.from_lunar(1955, 11, 19, False)
+        lunar_date = LunarDate.to_solar(1955, 11, 19, False)
         assert lunar_date.year == 1956
         assert lunar_date.month == 1
         assert lunar_date.day == 1
 
-    def test_solar_from_lunar_19550329_leap_double_case_check(self):
-        lunar_date = LunarDate.from_lunar(1955, 3, 29, False)
+    def test_solar_to_solar_19550329_leap_double_case_check(self):
+        lunar_date = LunarDate.to_solar(1955, 3, 29, False)
         assert lunar_date.year == 1955
         assert lunar_date.month == 4
         assert lunar_date.day == 21
-        lunar_date_leap = LunarDate.from_lunar(1955, 3, 29, True)
+        lunar_date_leap = LunarDate.to_solar(1955, 3, 29, True)
         assert lunar_date_leap.year == 1955
         assert lunar_date_leap.month == 5
         assert lunar_date_leap.day == 20
