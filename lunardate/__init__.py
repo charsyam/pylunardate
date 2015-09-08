@@ -7,6 +7,30 @@ Support Korean, Chinese with Lunar Table
 
 import datetime
 
+class LunarDateBaseError(Exception):
+    """The base class for other LunarDate exceptions"""
+
+    def __init__(self, value):
+        super(LunarDateBaseError, self).__init__(value)
+        self.value = value
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
+        return ("<LunarDateBaseError in " + repr(self.value) + ">")
+
+
+class InvalidInputRangeError(LunarDateBaseError):
+    """The InvalidInputRangeError class for other LunarDate exceptions"""
+
+    def __init__(self, value):
+        super(InvalidInputRangeError, self).__init__(value)
+        self.value = value
+
+    def __repr__(self):
+        return ("<InvalidInputRangeError in " + repr(self.value) + ">")
+
 
 KOREAN_LUNAR_YEAR_INFO = [
         [384, 1, 2, 1, 1, 2, 1, 2, 4, 2, 2, 1, 2],
@@ -192,7 +216,7 @@ class LunarDate(object):
         return '%4d%02d%02d' % (self.year, self.month, self.day)
 
     def __repr__(self):
-        return __str__()
+        return self.__str__()
 
     @staticmethod
     def lunardays_for_type(month_type):
@@ -204,6 +228,9 @@ class LunarDate(object):
 
     @staticmethod
     def from_solar(year, month, day):
+        if year < 1900 or year > 2050:
+            raise InvalidInputRangeError("%d should be in 1900~2050" % year)
+
         solar_date = datetime.date(year, month, day)
         days = (solar_date - LunarDate._start_date).days
 
