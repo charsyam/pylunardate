@@ -138,3 +138,6 @@ class TestLunarDate(object):
         assert solar_date_leap.year == 1955
         assert solar_date_leap.month == 5
         assert solar_date_leap.day == 20
+
+    def test_1(self):
+        assert 1 == 1
