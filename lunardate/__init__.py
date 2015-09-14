@@ -278,6 +278,10 @@ class LunarDate(object):
         return LunarDate(start_year + year_idx, target_month + 1,
                          days + 1, is_leap_month)
 
+    def solar(self):
+        return LunarDate.to_solar(self.year, self.month,
+                                  self.day, self.is_leap_month)
+
     @staticmethod
     def to_solar(year, month, day, is_leap_month = False):
         if year < 1900 or year > 2050:
