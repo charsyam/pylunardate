@@ -6,11 +6,11 @@ support python2 and python3
 
 ```python
 from lunardate import LunarDate
-d = LunarDate.from_solar(1979,11,11)
-print(d)
+lunar_date = LunarDate.from_solar(1979,11,11)
+print(lunar_date)
 
-d2 = LunarDate.to_solar(1979,9,22)
-print(d2)
+solar_date = LunarDate.to_solar(1979,9,22)
+print(solar_date)
 ```
 
 ## install
